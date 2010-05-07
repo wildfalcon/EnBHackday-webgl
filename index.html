@@ -33,10 +33,6 @@
 	</script> 
 
 	<script  type="text/javascript">
-	function log(msg)
-	{
-		console.log(msg);
-	}
 
 	function SpiderGLExample1()
 	{
@@ -47,8 +43,6 @@
 	{
 		load : function(gl)
 		{
-			log("SpiderGL Version : " + SGL_VERSION_STRING + "\n");
-
 			/*************************************************************/
 			this.xform     = new SglTransformStack();
 			this.angle     = 0.0;
@@ -60,7 +54,6 @@
 			var simpleVsrc = sglNodeText("SIMPLE_VERTEX_SHADER");
 			var simpleFsrc = sglNodeText("SIMPLE_FRAGMENT_SHADER");
 			var simpleProg = new SglProgram(gl, [simpleVsrc], [simpleFsrc]);
-			log(simpleProg.log);
 			this.simpleProg = simpleProg;
 			/*************************************************************/
 
