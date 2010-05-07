@@ -351,7 +351,7 @@
  
     perspective(45, 1.0, 0.1, 100.0);
  
-    var lighting = true;
+    var lighting = false;
     gl.uniform1i(shaderProgram.useLightingUniform, lighting);
     if (lighting) {
       gl.uniform3f(
