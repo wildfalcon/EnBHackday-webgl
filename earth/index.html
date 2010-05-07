@@ -8,11 +8,19 @@
 <script type="text/javascript" src="glUtils.js"></script> 
 <script type="text/javascript" src="jquery-1.4.2.min.js"></script> 
 <script type="text/javascript" src="jquery.earth.js"></script> 
+<script type="text/javascript" src="http://js.pusherapp.com/1.2/pusher.min.js"></script> 
+
  
 <script type="text/javascript"> 
 
   $(function(){
     $('canvas').earth();
+
+		var server = new Pusher('a9dbd597e532645e6457', 'visitors');
+		
+		server.bind('new-visit', function(data) {
+			console.log(data.lat, data.long);
+		});
   });
 
 </script> 
