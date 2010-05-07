@@ -140,7 +140,7 @@
         handleLoadedTexture(earthTexture)
       }
 
-      earthTexture.image.src = "earth.jpg";
+      earthTexture.image.src = "earth2.jpg";
     }
 
 
@@ -208,9 +208,10 @@
 
     var earthRotationMatrix = Matrix.I(4);
 
-    $.spin = function(){
-      var newRotationMatrix = createRotationMatrix(10, [0, 1, 0]);
-      earthRotationMatrix = newRotationMatrix.x(earthRotationMatrix);
+    setLatAndLong = function(latitude, longitude){
+      var R_longitude = createRotationMatrix(-longitude, [0, 1, 0]);
+      var R_latitude = createRotationMatrix(latitude, [1, 0, 0]);
+      earthRotationMatrix = R_latitude.x(R_longitude.x(Matrix.I(4)));
     }
 
     var earthVertexPositionBuffer;
@@ -379,8 +380,7 @@
     
     // Events
     this.bind('moveTo', function(evt, latitude, longitude, speed){
-      speed = speed || 1;
-      alert('TODO!');
+      setLatAndLong(latitude, longitude);
     });
     
     return this;

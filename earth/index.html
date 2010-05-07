@@ -13,11 +13,6 @@
 
   $(function(){
     $('canvas').earth();
-    function rotateToLatLong(radius, latitude, longitude) {
-      mvTranslate([0.0, 0.0, -radius]);
-      mvRotate(-latitude, [1.0, 0.0, 0.0]); 
-      mvRotate(longitude, [0.0, 0.0, 1.0]);
-    }
   });
 
 </script> 
