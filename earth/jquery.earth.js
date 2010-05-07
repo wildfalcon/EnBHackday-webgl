@@ -377,7 +377,13 @@
     
     init();
     
-    return $(this);
+    // Events
+    this.bind('moveTo', function(evt, latitude, longitude, speed){
+      speed = speed || 1;
+      alert('TODO!');
+    });
+    
+    return this;
   };
   
 })(jQuery);
