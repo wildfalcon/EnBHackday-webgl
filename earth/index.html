@@ -19,7 +19,7 @@
 		var server = new Pusher('a9dbd597e532645e6457', 'visitors');
 		
 		server.bind('new-visit', function(data) {
-			console.log(data.lat, data.long);
+		  $('canvas').trigger('moveTo', [data.lat, data.long]);
 		});
   });
 

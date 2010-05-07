@@ -404,6 +404,7 @@
     // Events
     var interval_id;
     var steps = 100;
+    
     this.bind('moveTo', function(evt, latitude, longitude, speed){
       if(interval_id) window.clearInterval(interval_id);
       interval_id = window.setInterval(function(){
