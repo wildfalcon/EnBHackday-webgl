@@ -15,10 +15,10 @@
 	  <div class="container"> 
 
 
-	   <div class="span-24 last"> 
-	    <script type="text/javascript" src="js/spidergl.js"></script> 
 
-	<script id="SIMPLE_VERTEX_SHADER" type="text/x-vertex"> 
+<script type="text/javascript" src="js/spidergl.js"></script> 
+
+<script id="SIMPLE_VERTEX_SHADER" type="text/x-vertex"> 
 	uniform   mat4 u_mvp;
 
 	attribute vec3 a_position;
@@ -175,40 +175,12 @@
 	};
 
 	sglRegisterCanvas("SGL_CANVAS1", new SpiderGLExample1(), 60.0);
-	</script> 
+</script> 
 
-	<div class="span-22 prepend-1 last"> 
-	 <h2>Example 1: Basic Mesh Rendering</h2> 
+
+
 	 <canvas id="SGL_CANVAS1" width="800" height="420"></canvas> 
-	 <p></p> 
-	</div> 
-
-	<div class="span-12 prepend-1"> 
-	 <h4>Description</h4> 
-	 <p>This example shows how to draw a basic triangle mesh and basic user interaction</p> 
-
-	</div> 
-
-	<div class="span-8 prepend-1 last"> 
-	 <h4>Controls</h4> 
-	 <p> 
-	 Press "1" for solid rendering.<br/> 
-	 Press "2" for wireframe rendering.<br/> 
-	 Press "3" for vertex rendering.
-	 </p> 
-	</div> 
-	<div class="span-22 prepend-1 last"> 
 	 <h4>Log</h4> 
 	 <textarea id="LOG" style="width:800px; height:200px;"></textarea> 
-	</div> 
-
-
-	   </div> 
-	   <div id="footer" class="span-23 prepend-1 last"> 
-	     <p>A <a href="http://vcg.isti.cnr.it">Visual Computing Laboratory - ISTI - CNR</a> initiative</p> 
-	     <p><a href="http://sourceforge.net/projects/spidergl"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=293949&amp;type=10" width="80" height="15" alt="Get SpiderGL at SourceForge.net. Fast, secure and Free Open Source software downloads" /></a></p> 
-	   </div> 
-	  </div> 
-
 </body>
 </html>
