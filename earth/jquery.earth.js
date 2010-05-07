@@ -388,24 +388,35 @@
       currentLong = (longitude >= 360 ? longitude - 360 : longitude);
     }
     
-    var spin = function(degrees){
-      setLatAndLong(currentLat, currentLong+degrees);
+    var spin = function(lat_degrees, long_degrees){
+      setLatAndLong(currentLat + lat_degrees, currentLong + long_degrees);
     };
     
+    function latDiff(newLat) {
+      return(newLat - currentLat);
+    }
+
     function longDiff(newLong){
       if(newLong - currentLong < 0) newLong = newLong + 360.0;
       return (newLong - currentLong);
     }
+    
     // Events
     var interval_id;
+    var steps = 100;
     this.bind('moveTo', function(evt, latitude, longitude, speed){
       if(interval_id) window.clearInterval(interval_id);
       interval_id = window.setInterval(function(){
-        spin(0.2);
-        if(longDiff(longitude) < 1) {
+        var lat_diff = latDiff(latitude);
+        var long_diff = longDiff(longitude);
+        var long_amount = long_diff / steps;
+        var lat_amount = lat_diff / steps;
+        spin(lat_amount, long_amount);
+        if(long_diff*long_diff + lat_diff*lat_diff < 1) {
           window.clearInterval(interval_id);
         }
-      }, 2);
+        
+      }, 5);
     });
     
     return this;
