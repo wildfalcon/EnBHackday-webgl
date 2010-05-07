@@ -208,12 +208,6 @@
 
     var earthRotationMatrix = Matrix.I(4);
 
-    setLatAndLong = function(latitude, longitude){
-      var R_longitude = createRotationMatrix(-longitude, [0, 1, 0]);
-      var R_latitude = createRotationMatrix(latitude, [1, 0, 0]);
-      earthRotationMatrix = R_latitude.x(R_longitude.x(Matrix.I(4)));
-    }
-
     var earthVertexPositionBuffer;
     var earthVertexNormalBuffer;
     var earthVertexTextureCoordBuffer;
@@ -293,13 +287,12 @@
       earthVertexIndexBuffer.itemSize = 1;
       earthVertexIndexBuffer.numItems = indexData.length;
     }
-
-
+    
     function drawScene() {
       gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
 
       perspective(45, 1.0, 0.1, 100.0);
-
+      
       var lighting = false;
       gl.uniform1i(shaderProgram.useLightingUniform, lighting);
       if (lighting) {
@@ -378,9 +371,41 @@
     
     init();
     
+    var longitudeDifference;
+    
+    var currentLong = 0.0;
+    var currentLat = 0.0;
+    
+    var setLatAndLong = function(latitude, longitude){
+      var R_longitude = createRotationMatrix(-longitude, [0, 1, 0]);
+      var R_latitude = createRotationMatrix(latitude, [1, 0, 0]);
+      setCurrentLatLong(latitude, longitude)
+      earthRotationMatrix = R_latitude.x(R_longitude.x(Matrix.I(4)));
+    }
+    
+    var setCurrentLatLong = function(latitude, longitude){
+      currentLat = latitude;
+      currentLong = (longitude >= 360 ? longitude - 360 : longitude);
+    }
+    
+    var spin = function(degrees){
+      setLatAndLong(currentLat, currentLong+degrees);
+    };
+    
+    function longDiff(newLong){
+      if(newLong - currentLong < 0) newLong = newLong + 360.0;
+      return (newLong - currentLong);
+    }
     // Events
+    var interval_id;
     this.bind('moveTo', function(evt, latitude, longitude, speed){
-      setLatAndLong(latitude, longitude);
+      if(interval_id) window.clearInterval(interval_id);
+      interval_id = window.setInterval(function(){
+        spin(0.2);
+        if(longDiff(longitude) < 1) {
+          window.clearInterval(interval_id);
+        }
+      }, 2);
     });
     
     return this;
