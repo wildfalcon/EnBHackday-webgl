@@ -1,20 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
-	<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"> 
-	 <head> 
-
-	  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
-		<title>EnB HackDay</title>
-
-
-
-
-
-	</head> 
-	 <body id="index"> 
-	  <div class="container"> 
-
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"> 
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+	<title>EnB HackDay</title>
+</head> 
 
 <script type="text/javascript" src="js/spidergl.js"></script> 
 
@@ -42,10 +32,10 @@
 	}
 	</script> 
 
-	<script  type="text/javascript"> 
+	<script  type="text/javascript">
 	function log(msg)
 	{
-		document.getElementById("LOG").innerHTML += (msg + "\n");
+		console.log(msg);
 	}
 
 	function SpiderGLExample1()
@@ -177,10 +167,7 @@
 	sglRegisterCanvas("SGL_CANVAS1", new SpiderGLExample1(), 60.0);
 </script> 
 
-
-
-	 <canvas id="SGL_CANVAS1" width="800" height="420"></canvas> 
-	 <h4>Log</h4> 
-	 <textarea id="LOG" style="width:800px; height:200px;"></textarea> 
+<canvas id="SGL_CANVAS1" width="800" height="420"></canvas>
+	 
 </body>
 </html>
